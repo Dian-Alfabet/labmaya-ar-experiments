@@ -1,0 +1,86 @@
+.loading-container {
+  display: flex;
+  height: 24rem;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-container svg {
+  margin-left: -0.25rem;
+  margin-right: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  animation: spin 1s linear infinite;
+  color: black;
+}
+
+.loading-container svg circle {
+  opacity: 0.25;
+}
+
+.loading-container svg path {
+  opacity: 0.75;
+  fill: currentColor;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.text-container.md {
+  width: 40%;
+  text-align: left;
+}
+
+.text-container p {
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.text-container h1 {
+  margin: 1rem 0;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.text-container p:last-of-type {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.fullscreen-view {
+  position: absolute;
+  top: 0;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
