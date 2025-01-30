@@ -1,0 +1,11 @@
+.viewer .controls {
+    display: none !important;
+    visibility: hidden !important;
+}
+.titlebar { 
+    display: none !important;
+    visibility: hidden !important;
+}
+/* body {
+    background-color: pink !important;
+} */

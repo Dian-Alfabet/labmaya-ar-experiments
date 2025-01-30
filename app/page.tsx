@@ -1,64 +1,122 @@
-'use client'
+import React from 'react'
+import SketchfabViewer from '../components/canvas/SketchfabViewer'
 
-import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
+// const MODEL_UID = "dd958716be0b4786b8700125eec618e5";
+// // const MODEL_UID = "c632823b6c204797bd9b95dbd9f53a06";
+// // const MODEL_UID = "d75f531255ad47a99051a4c421c8861b";
 
-import './styles.css';
-
-const Logo = dynamic(() => import('../components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
-const Dog = dynamic(() => import('../components/canvas/Examples').then((mod) => mod.Dog), { ssr: false })
-const Duck = dynamic(() => import('../components/canvas/Examples').then((mod) => mod.Duck), { ssr: false })
-const View = dynamic(() => import('../components/canvas/View').then((mod) => mod.View), {
-  ssr: false,
-  loading: () => (
-    <div className="loading-container">
-      <svg fill="none" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-        <path
-          fill="currentColor"
-          d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0 1 4 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        />
-      </svg>
-    </div>
-  ),
-})
-const Common = dynamic(() => import('../components/canvas/View').then((mod) => mod.Common), { ssr: false })
-
-export default function Page() {
+// const Viewer = ({ apiRef, sketchfabUrl }: any) => {
+const page = () => {
   return (
-    <>
-      <div className="container">
-        <div className="text-container md">
-          <h1>Lab Maya AR Playground Research</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ textAlign: 'center'}}>
+            <h1>Lab Maya Research AR Playground</h1>
+            
+            <p>
+                Viewer API: <a target='_blank' href="https://sketchfab.com/developers/viewer/initialization"> Click Here</a>
+            </p>
         </div>
-
-        <div className="view-container md">
-          <View className="loading-container">
-            <Suspense fallback={null}>
-              <Logo route="/blob" scale={0.6} position={[0, 0, 0]} />
-              <Common />
-            </Suspense>
-          </View>
+        <div style={{ display: 'flex', gap: '32px' }}>
+            <div style={{ width: '50%' }}>
+                <SketchfabViewer sketchfabUrl="dd958716be0b4786b8700125eec618e5" />
+            </div>
+            <div style={{ width: '50%' }}>
+                <h2>Sketchfab Premium</h2>
+                <p>
+                    Sketchfab Premium does not allow the removal of certain built-in assets from Sketchfab. Even if they are set to "hide," they will still appear, meaning some Sketchfab-related  information remains visible. However, we can add annotations to provide additional information within the 3D model.
+                </p>
+                <pre>
+                    <code>
+                        <div>{`client.init(sketchfabUrl, {`}</div>
+                        <div>{`  ui_controls: 0,`}</div>
+                        <div>{`  ui_watermark: 0,`}</div>
+                        <div>{`  ui_start: 0,`}</div>
+                        <div>{`  ui_settings: 0,`}</div>
+                        <div>{`  ui_infos: 0,`}</div>
+                        <div>{`  ui_stop: 0,`}</div>
+                        <div>{`  success: function onSuccess( api: any ){`}</div>
+                        <div>{`    setApi(api);`}</div>
+                        <div>{`    api.start();`}</div>
+                        <div>{`    api.addEventListener( 'viewerready', function() {`}</div>
+                        <div>{`        console.log( 'Viewer is ready' );`}</div>
+                        <div>{`    } );`}</div>
+                        <div>{`},`}</div>
+                        <div>{`  error: () => {`}</div>
+                        <div>{`    console.log("Viewer error");`}</div>
+                        <div>{`  },`}</div>
+                        <div>{`});`}</div>
+                    </code>
+                </pre>
+            </div>
         </div>
-      </div>
-
-      <div className="row">
-        <View orbit className="loading-container">
-          <Suspense fallback={null}>
-            <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} />
-            <Common color={'lightpink'} />
-          </Suspense>
-        </View>
-        <br />
-        <br />
-        <br />
-        <View orbit className="loading-container">
-          <Suspense fallback={null}>
-            <Duck route="/blob" scale={2} position={[0, -1.6, 0]} />
-            <Common color={'lightblue'} />
-          </Suspense>
-        </View>
-      </div>
-    </>
+        <div style={{ display: 'flex', gap: '32px' }}>
+            <div style={{ width: '50%' }}>
+                <h2>Sketchfab Free Content</h2>
+                <p>
+                    With the free version of Sketchfab, we can configure the Viewer API to display the 3D object without showing any Sketchfab-related information.
+                </p>
+                <pre>
+                    <code>
+                        <div>{`client.init(sketchfabUrl, {`}</div>
+                        <div>{`  ui_controls: 0,`}</div>
+                        <div>{`  ui_watermark: 0,`}</div>
+                        <div>{`  ui_start: 0,`}</div>
+                        <div>{`  ui_settings: 0,`}</div>
+                        <div>{`  ui_infos: 0,`}</div>
+                        <div>{`  ui_stop: 0,`}</div>
+                        <div>{`  success: function onSuccess( api: any ){`}</div>
+                        <div>{`    setApi(api);`}</div>
+                        <div>{`    api.start();`}</div>
+                        <div>{`    api.addEventListener( 'viewerready', function() {`}</div>
+                        <div>{`        console.log( 'Viewer is ready' );`}</div>
+                        <div>{`    } );`}</div>
+                        <div>{`},`}</div>
+                        <div>{`  error: () => {`}</div>
+                        <div>{`    console.log("Viewer error");`}</div>
+                        <div>{`  },`}</div>
+                        <div>{`});`}</div>
+                    </code>
+                </pre>
+            </div>
+            <div style={{ width: '50%' }}>
+                <SketchfabViewer sketchfabUrl="d75f531255ad47a99051a4c421c8861b" />
+            </div>
+        </div>
+        <div style={{ display: 'flex', gap: '32px' }}>
+            <div style={{ width: '50%' }}>
+                <SketchfabViewer sketchfabUrl="35da9d322cbe406bbf7faf38307a20c2" />
+            </div>
+            <div style={{ width: '50%' }}>
+                <h2>Another Sketchfab</h2>
+                <p>
+                    This is another Sketchfab model that can be used as a reference for educational purposes.
+                </p>
+                <pre>
+                    <code>
+                        <div>{`client.init(sketchfabUrl, {`}</div>
+                        <div>{`  ui_controls: 0,`}</div>
+                        <div>{`  ui_watermark: 0,`}</div>
+                        <div>{`  ui_start: 0,`}</div>
+                        <div>{`  ui_settings: 0,`}</div>
+                        <div>{`  ui_infos: 0,`}</div>
+                        <div>{`  ui_stop: 0,`}</div>
+                        <div>{`  success: function onSuccess( api: any ){`}</div>
+                        <div>{`    setApi(api);`}</div>
+                        <div>{`    api.start();`}</div>
+                        <div>{`    api.addEventListener( 'viewerready', function() {`}</div>
+                        <div>{`        console.log( 'Viewer is ready' );`}</div>
+                        <div>{`    } );`}</div>
+                        <div>{`},`}</div>
+                        <div>{`  error: () => {`}</div>
+                        <div>{`    console.log("Viewer error");`}</div>
+                        <div>{`  },`}</div>
+                        <div>{`});`}</div>
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
   )
 }
+
+export default page
