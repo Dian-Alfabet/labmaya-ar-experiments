@@ -45,7 +45,7 @@ export default function Page() {
         </div>
       </div>
 
-      {/* <div className="row">
+      <div className="row">
         <View orbit className="loading-container">
           <Suspense fallback={null}>
             <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} />
@@ -75,15 +75,15 @@ export default function Page() {
       </div>
       <div className="row">
         Another Example
-      </div> */}
-      <div className="row" style={{ height: '1000px' }}>
+      </div>
+      {/* <div className="row" style={{ height: '1000px' }}>
         <View orbit className="loading-container">
           <Suspense fallback={null}>
             <ThreeScene />
             <Common color={'gray'} />
           </Suspense>
         </View>
-      </div>
+      </div> */}
       {/* <div className="row" style={{ height: '1000px' }}>
         <View orbit className="loading-container">
           <Suspense fallback={null}>
